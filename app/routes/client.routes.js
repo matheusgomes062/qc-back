@@ -4,17 +4,17 @@ module.exports = (app) => {
 
   var router = require('express').Router();
 
-  router.post('/', Auth, clients.create);
+  router.post('/', clients.create);
 
-  router.get('/', Auth, clients.findAll);
+  router.get('/', clients.findAll);
 
-  router.get('/:id', Auth, clients.findOne);
+  router.get('/:id', clients.findOne);
 
-  router.put('/:id', Auth, clients.update);
+  router.put('/:id', clients.update);
 
-  router.delete('/:id', Auth, clients.delete);
+  router.delete('/:id', clients.delete);
 
-  router.delete('/', Auth, clients.deleteAll);
+  router.delete('/', clients.deleteAll);
 
-  app.use('/api/client', Auth, router);
+  app.use(router);
 };
