@@ -1,8 +1,8 @@
 module.exports = (app) => {
   const clients = require('../domain/client/controllers/client.controller');
+  const Auth = require('../domain/client/middleware/auth');
 
   var router = require('express').Router();
-  const { Auth } = require('../domain/client/middleware');
 
   router.post('/', Auth, clients.create);
 

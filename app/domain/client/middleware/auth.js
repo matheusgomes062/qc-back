@@ -1,10 +1,10 @@
-import jwt from 'jsonwebtoken';
-import authConfig from '../../config/auth';
-import { promisify } from 'util';
+const jwt = require('jsonwebtoken');
+const authConfig = require('../../../config/auth');
+const { promisify } = require('util');
 
-import('dotenv/config');
+require('dotenv/config');
 
-export default async (req, res, next) => {
+const Auth = async (req, res, next) => {
   const authHeader = req.header.authorization;
 
   if (!authHeader) {
@@ -23,4 +23,8 @@ export default async (req, res, next) => {
   } catch (error) {
     return res.status(401).json({ message: error.message });
   }
+};
+
+module.exports = () => {
+  Auth;
 };
